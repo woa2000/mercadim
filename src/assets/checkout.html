@@ -1,0 +1,23 @@
+<table style="border:1px solid #eeeeee;border-collapse: collapse;" border="1" cellpadding="0" cellspacing="0">
+    <thead
+        style="background: #1c6eA4; border-bottom: 2px solide #444; font-size: 15px; font-weight: bold; color: #fff;">
+        <tr>
+            <th style="padding: 10px; width: 100px;">Departamento</th>
+            <th style="padding: 10px; width: 100px;">Categoria</th>
+            <th style="padding: 10px;width: 250px;">Produto</th>
+            <th style="padding: 10px;width: 100px;text-align: center;">Quantidade</th>
+            <th style="padding: 10px;width: 100px;">Preço Un.</th>
+            <th style="padding: 10px;width: 100px;">Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="background-color:@{if(equals(mod(variables('RowNumber'),2),0),'white','#e1e1e1')};">
+            <td>@{items('Apply_to_each')?['Category']}</td>
+            <td>@{items('Apply_to_each')?['SubCategory']}</td>
+            <td>@{items('Apply_to_each')?['Description']}</td>
+            <td>@{items('Apply_to_each')?['Quantity']}</td>
+            <td>@{formatnumber(items('Apply_to_each')?['MarkupPrice'],'C','pt-BR')}</td>
+            <td>@{formatnumber(items('Apply_to_each')?['SubTotalMarkupPrice'],'C','pt-BR')}</td>
+        </tr>
+    </tbody>
+</table>

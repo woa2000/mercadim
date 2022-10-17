@@ -1,0 +1,36 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-twplataformavendas-dev-162456-authRole",
+      "UnauthRoleArn": "arn:aws:iam::501200485601:role/amplify-twplataformavendas-dev-162456-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::501200485601:role/amplify-twplataformavendas-dev-162456-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-twplataformavendas-dev-162456-deployment",
+      "UnauthRoleName": "amplify-twplataformavendas-dev-162456-unauthRole",
+      "StackName": "amplify-twplataformavendas-dev-162456",
+      "StackId": "arn:aws:cloudformation:us-east-2:501200485601:stack/amplify-twplataformavendas-dev-162456/e98a72d0-3dd0-11ed-a2c0-02c7fc7135b4",
+      "AmplifyAppId": "dlonjowowe5t0",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-twplataformavendas-dev-162456-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
+    },
+    "categories": {
+      "auth": {
+        "twplataformavendas9d6f6cc5": {},
+        "TWPlataformaVendas": {}
+      },
+      "function": {
+        "twplataformavendas9d6f6cc5CustomMessage": {
+          "REDIRECTURL": "",
+          "EMAILSUBJECT": "",
+          "EMAILMESSAGE": "",
+          "deploymentBucketName": "amplify-twplataformavendas-dev-162456-deployment",
+          "s3Key": "amplify-builds/twplataformavendas9d6f6cc5CustomMessage-6755464144394b366e52-build.zip"
+        },
+        "twplataformavendas9d6f6cc5PreSignup": {
+          "DOMAINDENYLIST": "",
+          "deploymentBucketName": "amplify-twplataformavendas-dev-162456-deployment",
+          "s3Key": "amplify-builds/twplataformavendas9d6f6cc5PreSignup-366b502f537a534a4478-build.zip"
+        }
+      }
+    }
+  }
+}

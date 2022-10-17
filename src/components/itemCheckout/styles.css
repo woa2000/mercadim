@@ -1,0 +1,31 @@
+.row-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #8AA942;
+}
+
+.row-item .col-1{
+    width: 40%;
+    display: flex;
+}
+
+.row-item .col-1{
+    width: 40%;
+    display: flex;
+}
+
+.row-item .col-2, .row-item .col-3, .row-item .col-4{
+    width: 20%;
+    text-align: center;
+}
+
+.group-img {
+    padding: 10px;
+}
+
+.group-img img{
+    width: 100px;
+    height: 100px;
+}

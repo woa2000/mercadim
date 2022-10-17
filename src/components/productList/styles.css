@@ -1,0 +1,23 @@
+.products-container{
+    padding: 20px;
+}
+
+.product-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    margin-bottom: 1rem;
+    gap: 20px;
+}
+
+.category-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    margin-bottom: 1rem;
+    gap: 10px;
+}
+
+.subcategory-group.hide{
+    display: none;
+}

@@ -1,0 +1,6 @@
+.ant-menu-dark.ant-menu-horizontal > .ant-menu-item:hover {
+    /* background-color: #f59701; */
+    background-color: transparent;
+    border-bottom: #f59701 solid 2px;
+    /* color: #fff; */
+}

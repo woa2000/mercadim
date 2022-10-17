@@ -1,0 +1,116 @@
+.cart-list{
+    position: absolute;
+    right: 50px;
+    display: none;
+    width: 450px;
+    background-color: #F1EFEF;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 20px;
+}
+
+.cart-list.show{
+    display: block;
+}
+
+.group-cart-button{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+}
+
+.cart-button{
+    display: flex;
+    background-color: #fff;
+    border: 1px none;
+    border-radius: 8px;
+    box-shadow: 0px 24px 50px #0000000D;
+    height: 40px;
+    width: 40px;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-button svg {
+    color: #000;
+    width: 26px;
+    height: 26px;
+}
+
+.bullet{
+    background-color: red;
+    border: none;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    top: 18px;
+    font-size: 14px;
+    font-weight: 800;
+    text-align: center;
+}
+
+.cart-container .item-list{
+    max-height: calc(100vh - 250px);
+    overflow-y: auto; 
+}
+
+.group-total{
+    padding: 10px 65px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    margin-top: 20px;
+}
+
+.group-total .total{
+    font-size: 18px;
+    font-weight: 800;
+    font-family: Poppins;
+    color: #000;
+}
+
+.group-total .total span{
+    color: #8AA942;
+}
+
+.cart-container .checkout{
+    display: flex;
+    justify-content: center;
+}
+
+.cart-container .checkout button{
+    background-color: #8AA942;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 800;
+    font-family: Poppins;
+    padding: 10px 20px;
+    margin-top: 10px;
+}
+
+.close-cart{
+    display: flex;
+    justify-content: end;
+}
+
+.close {
+    background-color: #fff;  
+    height: 40px;
+    width: 40px;
+    border-radius: 24px;
+    border: 2px solid #616161;
+  }
+
+  .text-close {
+    text-align: center;
+    vertical-align: top;
+    font-size: 24px;
+    font-family: Poppins;
+    line-height: auto;
+    color: #6a6a6a;
+    margin: inherit;
+}

@@ -1,0 +1,47 @@
+.btn-category {
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 8px 24px;
+  gap: 16px;
+  border: 1px solid #8aa942;
+  max-width: 250px;
+  min-height: 60px;
+}
+
+  .text-btn-category {
+    text-align: left;
+    vertical-align: top;
+    font-size: 14px;
+    font-family: Poppins;
+    line-height: auto;
+    color: #8aa942;
+    margin: inherit;
+  }
+
+  .img-category {
+    height: 24px;
+    width: 24px;
+    color: #8aa942;
+  }
+
+  .btn-category.active{
+    background-color: #8aa942;
+  }
+
+    .btn-category.active .text-btn-category, .btn-category.active .img-category{
+        color: #ffffff;
+    }
+
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  
+  
+  
