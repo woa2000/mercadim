@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom"
 
 import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "../../store";
-import { createOrder, fetchCart } from "../../store/cartSlice";
+import { createOrder, sendOrder, fetchCart } from "../../store/cartSlice";
 
 import ItemCheckout from "../../components/itemCheckout/itemCheckout";
 
@@ -15,6 +15,7 @@ import TotalCart from "../../components/totalCart/totalCart";
 function Ckeckout() {
     const cartItems = useSelector((state: RootState) => state.cart.cartItems);
     const userId = useSelector((state: RootState) => state.user.userId);
+    const userName = useSelector((state: RootState) => state.user.name);
 
     const history = useHistory();
 
@@ -26,7 +27,11 @@ function Ckeckout() {
 
     function handleCloseOrder() {
         dispatch(createOrder(userId))
-            .then(() => {
+            .then((data) => {
+                console.log("create order ->", data);
+                console.log("create order payload ->", data.payload);
+                const sendOrderData = {OrderId : data.payload.value.modelResult.newEntityId, UserName: userName};
+                dispatch(sendOrder(sendOrderData));
                 alert("Pedido realizado com sucesso. Em breve você receberá informações seu pedido.");
                 dispatch(fetchCart(userId)).then(() => {
                     history.push("/");

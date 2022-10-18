@@ -70,6 +70,23 @@ export const createOrder = createAsyncThunk('order/createOrder', async (userId: 
     }
 })
 
+export const sendOrder = createAsyncThunk('order/sendOrder', async ({OrderId, UserName}: any, { rejectWithValue, getState, dispatch }) => {    
+    try {
+        console.log("OrderId ->", OrderId);
+        const item = {orderId: OrderId, solicitante: UserName, email: "rom@romanimilano.com"};
+        const {data} = await api.post(`/Order/SendOrder`, item, {
+            headers: {
+                'content-type': 'text/json'
+            }
+        });
+        console.log("createOrder", data);
+        return data;
+
+    } catch (error: any) {
+        return error?.response;
+    }
+})
+
 
 function UpdateCartItems(cartItems: CartItem[], id: string, userId: string, item: Product, quantity: number): CartItem[] {
     const itemIndex = cartItems.findIndex((cartItem: CartItem) => cartItem.id === id);
