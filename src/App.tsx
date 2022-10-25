@@ -108,7 +108,6 @@ function App(user: IUser) {
             {userRoutes.map((r, idx) => (
               <Route key={idx} exact path={r.path} component={r.component} />
             ))}
-
           </Switch>
         </CustomLayout>
       </Router>
