@@ -272,14 +272,14 @@ function BackOffice() {
         }
     }
 
-    function RenderForaDaCaixinha() {
+    function RenderForaDaCasinha() {
         const [form] = Form.useForm();
         const [loading, setLoading] = useState(false);
         const [fileList, setFileList] = useState<UploadFile[]>([]);
 
         async function createItem() {
             try {
-                const item = { description: form.getFieldValue("description"), category: 'Fora da Caixinha', subCategory: "Fora da Caixinha", price: parseFloat(form.getFieldValue("price")), active: true }
+                const item = { description: form.getFieldValue("description"), category: 'Fora da Casinha', subCategory: "Fora da Casinha", price: parseFloat(form.getFieldValue("price")), active: true }
                 console.log("item ->", item);
                 const formData = new FormData();
                 formData.append("file", fileList[0] as any);
@@ -402,8 +402,8 @@ function BackOffice() {
         },
         {
             key: "3",
-            label: "Fora da Caixinha",
-            children: RenderForaDaCaixinha()
+            label: "Fora da Casinha",
+            children: RenderForaDaCasinha()
         }
     ];
 
