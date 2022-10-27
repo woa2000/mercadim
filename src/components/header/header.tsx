@@ -33,7 +33,7 @@ function Header({ signOut }: any) {
                 console.log(error);
             })
     }
-
+    
     useEffect(() => {
         getItens();
     }, []);

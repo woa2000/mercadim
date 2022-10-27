@@ -2,10 +2,18 @@ import React from "react";
 import { Input, Space } from 'antd';
 import "./styles.css";
 
+import { useSelector, useDispatch } from "react-redux";
+import { AppDispatch, RootState } from "../../store";
+import { fetchSearchProducts } from "../../store/productsSlice";
+
 const { Search } = Input;
 
 function SearchItems() {
-    const onSearch = (value: string) => console.log(value);
+    const dispatch = useDispatch<AppDispatch>();
+
+    const onSearch = (value: string) => {
+        dispatch(fetchSearchProducts(value));
+    }
 
     return (
 

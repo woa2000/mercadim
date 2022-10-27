@@ -17,6 +17,18 @@ export const fetchProducts = createAsyncThunk('products/list', async (departName
     }
 })
 
+export const fetchSearchProducts = createAsyncThunk('products/search', async (search : string, {rejectWithValue, getState, dispatch}) => {
+    try{
+         console.log( "departName in fetch =>", search);
+         const { data }= await api.get(`/Itens/ListItensSearch/${search}`);
+         console.log( "data in fetch =>", data);
+         return data;
+
+    }catch(error : any){
+        return error?.response;
+    }
+})
+
 const products = createSlice({
     name: "products",
     initialState: {
@@ -46,6 +58,22 @@ const products = createSlice({
             state.error = action.payload as string;
         })
         builder.addCase(fetchProducts.pending, (state, action) => {
+            state.loading = true;
+        })
+
+        builder.addCase(fetchSearchProducts.fulfilled, (state, action) => {
+            const {depart, categories , products }= action.payload;
+            state.departName = depart;
+            state.categoryList = categories
+            state.products = products
+
+            state.loading = false;
+        })
+        builder.addCase(fetchSearchProducts.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.payload as string;
+        })
+        builder.addCase(fetchSearchProducts.pending, (state, action) => {
             state.loading = true;
         })
 

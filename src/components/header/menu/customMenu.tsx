@@ -60,15 +60,6 @@ function CustomMenu() {
             {menuItens.map((item) => (
                 <Menu.Item key={item.id} onClick={() => handleSelectDepart(item.name)}>{item.name}</Menu.Item>
             ))}
-               
-            {/* <Menu.Item onClick={() => {handleSelectDepart("Alimentos")}} >Alimentos</Menu.Item> 
-            <Menu.Item onClick={() => {handleSelectDepart("Bebidas")}} >Bebidas</Menu.Item>
-            <Menu.Item onClick={() => {handleSelectDepart("Empresas")}} >Empresas</Menu.Item>
-            <Menu.Item onClick={() => {handleSelectDepart("Guloseimas")}} >Guloseimas</Menu.Item>
-            <Menu.Item onClick={() => {handleSelectDepart("Higiene")}} >Higiene</Menu.Item>
-            <Menu.Item onClick={() => {handleSelectDepart("Limpeza")}} >Limpeza</Menu.Item>
-            <Menu.Item onClick={() => {handleSelectDepart("Natureba")}} >Natureba</Menu.Item>
-            <Menu.Item onClick={() => {handleSelectDepart("Utilidades")}} >Utilidades</Menu.Item> */}
         </Menu>
     )
 }
