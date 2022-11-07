@@ -16,6 +16,7 @@ function Ckeckout() {
     const cartItems = useSelector((state: RootState) => state.cart.cartItems);
     const userId = useSelector((state: RootState) => state.user.userId);
     const userName = useSelector((state: RootState) => state.user.name);
+    const userEmail = useSelector((state: RootState) => state.user.email);
 
     const history = useHistory();
 
@@ -28,9 +29,7 @@ function Ckeckout() {
     function handleCloseOrder() {
         dispatch(createOrder(userId))
             .then((data) => {
-                console.log("create order ->", data);
-                console.log("create order payload ->", data.payload);
-                const sendOrderData = {OrderId : data.payload.value.modelResult.newEntityId, UserName: userName};
+                const sendOrderData = {OrderId : data.payload.value.modelResult.newEntityId, UserEmail: userEmail, UserName: userName};
                 dispatch(sendOrder(sendOrderData));
                 alert("Pedido realizado com sucesso. Em breve você receberá informações seu pedido.");
                 dispatch(fetchCart(userId)).then(() => {

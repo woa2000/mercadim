@@ -70,10 +70,9 @@ export const createOrder = createAsyncThunk('order/createOrder', async (userId: 
     }
 })
 
-export const sendOrder = createAsyncThunk('order/sendOrder', async ({OrderId, UserName}: any, { rejectWithValue, getState, dispatch }) => {    
+export const sendOrder = createAsyncThunk('order/sendOrder', async ({OrderId, UserName, UserEmail}: any, { rejectWithValue, getState, dispatch }) => {    
     try {
-        console.log("OrderId ->", OrderId);
-        const item = {orderId: OrderId, solicitante: UserName, email: "rom@romanimilano.com"};
+        const item = {orderId: OrderId, solicitante: UserName, emailSolicitante: UserEmail, email: "rom@romanimilano.com"};
         const {data} = await api.post(`/Order/SendOrder`, item, {
             headers: {
                 'content-type': 'text/json'
