@@ -290,17 +290,17 @@ function BackOffice() {
                     File: fileList[0]
                 }
 
-                const { data } = await api.post('/Itens/CreateItem', item, {
-                    headers: {
-                        'content-type': 'text/json'
-                    }
-                });
-
-                // const { data } = await api.post('/Itens/AddProduct', formData, {
+                // const { data } = await api.post('/Itens/CreateItem', item, {
                 //     headers: {
-                //         'content-type': 'multipart/form-data'
+                //         'content-type': 'text/json'
                 //     }
                 // });
+
+                const { data } = await api.post('/Itens/AddProduct', formData, {
+                    headers: {
+                        'content-type': 'multipart/form-data'
+                    }
+                });
                 console.log("Create Item ->", data);
 
             } catch (error: any) {
