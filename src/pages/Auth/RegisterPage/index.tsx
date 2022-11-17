@@ -9,6 +9,8 @@ import { setUser } from "../../../store/userSlice";
 
 import { Auth } from 'aws-amplify'
 
+import * as Yup from 'yup';
+
 import "./styles.css";
 
 import { IUser } from "../../../interfaces";
@@ -20,6 +22,15 @@ function RegisterPage() {
     const dispatch = useDispatch<AppDispatch>();
 
     const history = useHistory();
+
+    validationSchema: Yup.object({
+        username: Yup.string().required('Email is required'),
+        password: Yup.string().required('Password is required'),
+        confirmpassword:
+            Yup.string()
+                .required('Password confirmation is required')
+                .oneOf([Yup.ref('password')], 'Passwords must match'),
+    });
 
     async function handleRegister() {
         if (loading) {
@@ -55,6 +66,8 @@ function RegisterPage() {
                     <Form
                         layout='vertical'
                         form={form}
+                        onFinish={handleRegister}
+                        autoComplete="off"
                     >
                         <Form.Item
                             name='name'
@@ -62,8 +75,10 @@ function RegisterPage() {
                             rules={[
                                 {
                                     required: true,
+                                    message: 'Por favor, informe seu nome',
                                 },
                             ]}
+                            hasFeedback
                         >
                             <Input placeholder="Nome" />
                         </Form.Item>
@@ -72,16 +87,32 @@ function RegisterPage() {
                             label="E-mail"
                             rules={[
                                 {
+                                    type: 'email',
+                                    message: 'Por favor, informe um e-mail válido',
+                                  },
+                                {
                                     required: true,
                                     message: 'Por favor, informe seu e-mail',
                                 },
                             ]}
+                            hasFeedback
                         >
                             <Input placeholder="E-mail" />
                         </Form.Item>
                         <Form.Item
                             name='password'
                             label="Senha"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Por favor, informe uma senha',
+                                },
+                                { 
+                                    min: 6,
+                                    message: 'A senha deve ter no mínimo 6 caracteres' 
+                                }
+                            ]}
+                            hasFeedback
                         >
                             <Input
                                 placeholder="Senha"
@@ -91,6 +122,7 @@ function RegisterPage() {
                         <Form.Item
                             name='confirmpassword'
                             label="Confirmar Senha"
+                            dependencies={["password"]}
                             rules={[
                                 { required: true, message: 'Por favor, confirme sua senha' },
                                 ({ getFieldValue }) => ({
@@ -102,6 +134,7 @@ function RegisterPage() {
                                     }
                                 })
                             ]}
+                            hasFeedback
                         >
                             <Input
                                 placeholder="Confirmar Senha"
@@ -109,12 +142,12 @@ function RegisterPage() {
                             />
                         </Form.Item>
                         <Form.Item>
-                            <Button key="submit" type="primary" onClick={handleRegister} className="btn-register" >
+                            <Button key="submit" type="primary" className="btn-register" htmlType="submit">
                                 {loading ? "Registrando..." : "Registrar"}
                             </Button>
                         </Form.Item>
                     </Form>
-                    <div>
+                    <div className='link-account'>
                         <Link to="/">Acessar conta</Link>
                     </div>
                 </div>

@@ -82,7 +82,7 @@ function LoginPage() {
                             </Button>
                         </Form.Item>
                     </Form>
-                    <div>
+                    <div className='link-account'>
                         <Link to="/signup">Criar conta</Link>
                     </div>
                 </div>

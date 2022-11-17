@@ -34,3 +34,9 @@ body{
 .box .logo img{
     width: 100%;
 }
+
+.link-account{
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+}

@@ -50,6 +50,11 @@ function ConfirmRegisterPage() {
         if (loadingResend) {
             return;
         }
+        if(form.getFieldValue('username') === undefined || form.getFieldValue('username') === '') {
+            alert('Favor informar o e-mail para reenviar o código de verificação.');
+            return;
+        }
+
         setLoadingResend(true);
         try {
             await Auth.resendSignUp(form.getFieldValue('username'))
@@ -61,7 +66,7 @@ function ConfirmRegisterPage() {
         } catch (e) {
             setLoadingResend(false);
             console.log("handleRegister error ->", e);
-            alert('Opps..., Ocorreu um erro ao tentar confirmar seu cadastro.');
+            alert('Opps..., Ocorreu um erro ao reeviar o código, tente novamente!');
         }
     }
 
@@ -94,7 +99,7 @@ function ConfirmRegisterPage() {
                         </Form.Item>
                         <Form.Item
                             name='code'
-                            label="Código de Verificação"
+                            label="Informe o Código recebido no e-mail"
                             rules={[
                                 {
                                     required: true,
