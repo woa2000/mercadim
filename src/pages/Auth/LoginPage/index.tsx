@@ -71,7 +71,7 @@ function LoginPage() {
                         <Form.Item
                             name='password'
                             label="Senha">
-                            <Input
+                            <Input.Password
                                 placeholder="Senha"
                                 type="password"
                             />

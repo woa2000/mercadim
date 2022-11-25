@@ -48,7 +48,11 @@ function RegisterPage() {
         } catch (e) {
             setLoading(false);
             console.log("handleRegister error ->", e);
-            alert('Opps..., Ocorreu um erro ao tentar logar');
+            
+            if (String(e).trim() === "UsernameExistsException: An account with the given email already exists.")
+                alert('Já existe uma conta com o e-mail fornecido');
+            else
+                alert('Opps..., Ocorreu um erro ao tentar logar');
         }
     }
 
@@ -114,7 +118,7 @@ function RegisterPage() {
                             ]}
                             hasFeedback
                         >
-                            <Input
+                            <Input.Password
                                 placeholder="Senha"
                                 type="password"
                             />
@@ -136,7 +140,7 @@ function RegisterPage() {
                             ]}
                             hasFeedback
                         >
-                            <Input
+                            <Input.Password
                                 placeholder="Confirmar Senha"
                                 type="password"
                             />

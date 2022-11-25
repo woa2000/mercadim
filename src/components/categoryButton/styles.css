@@ -9,6 +9,7 @@
   border: 1px solid #8aa942;
   max-width: 250px;
   min-height: 60px;
+  cursor: pointer;
 }
 
   .text-btn-category {
@@ -29,6 +30,7 @@
 
   .btn-category.active{
     background-color: #8aa942;
+    cursor: default;
   }
 
     .btn-category.active .text-btn-category, .btn-category.active .img-category{
