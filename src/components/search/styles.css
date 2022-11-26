@@ -32,5 +32,7 @@
     border-color: #d98703;
 }
 
-
+.ant-select-dropdown{
+    position: fixed !important;
+}
 
