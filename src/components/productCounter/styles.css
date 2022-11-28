@@ -10,7 +10,7 @@
     width: 40px;
     border-radius: 24px;
     border: 2px solid;
-    
+    cursor: pointer;
   }
   .remove{
     background-color: #ff0000;  
@@ -74,6 +74,7 @@
     /* width: 120px; */
     border: none;
     padding: 8px 12px;
+    cursor: pointer;
   }
   .text-btn-add {
     text-align: center;
