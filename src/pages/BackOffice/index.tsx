@@ -2,28 +2,23 @@ import React, { useState, useRef, useEffect } from "react";
 
 import api from "../../services/api";
 
+import { useSelector, useDispatch } from "react-redux";
+import { AppDispatch, RootState } from "../../store";
+import { setActiveCategory, fetchProducts } from "../../store/productsSlice";
+
 import { Tabs, Table, Space, Switch, Input, Form, Button, Upload } from 'antd';
 import { CheckOutlined, CloseOutlined, UploadOutlined } from '@ant-design/icons';
 import type { RcFile, UploadFile, UploadProps } from 'antd/es/upload/interface';
 
 import "./styles.css";
 
-import { Depart, Category } from "../../interfaces";
+import { Depart, Category, Product } from "../../interfaces";
 
 function BackOffice() {
     const onChange = (key: string) => {
         console.log(key);
     };
-
-    function renderTabContent(id: string) {
-        return (
-            <div className="tab-content">
-                <h1>Tab Content {id}</h1>
-            </div>
-        )
-    }
-
-
+    
     function RenderTabDepart() {
         const [searchText, setSearchText] = useState('');
         const [searchedColumn, setSearchedColumn] = useState('');
@@ -273,9 +268,16 @@ function BackOffice() {
     }
 
     function RenderForaDaCasinha() {
+        const dispatch = useDispatch<AppDispatch>();
         const [form] = Form.useForm();
         const [loading, setLoading] = useState(false);
         const [fileList, setFileList] = useState<UploadFile[]>([]);
+
+        const products = useSelector((state: RootState) => state.products.products) as Product[];
+
+        const [searchText, setSearchText] = useState('');
+        const [searchedColumn, setSearchedColumn] = useState('');
+        const searchInput = useRef(null);
 
         async function createItem() {
             try {
@@ -336,13 +338,56 @@ function BackOffice() {
             fileList,
         };
 
+        const columns = [
+            {
+                title: 'Produto',
+                dataIndex: 'description',
+                sorter: (a: any, b: any) => a.description.localeCompare(b.description),
+                defaultSortOrder: 'ascend'
+            },
+            {
+                title: 'Preço',
+                dataIndex: 'price',
+            },            
+            {
+                title: 'Ativo',
+                key: 'active',
+                filters: [
+                    {
+                        text: 'Ativo',
+                        value: 'true',
+                    },
+                    {
+                        text: 'Inativo',
+                        value: 'false',
+                    },
+                ],
+                onFilter: (value: any, record: any) => record.active.toString().search(value) !== -1,
+                render: (_: any, record: any) => (
+                    <Space size="middle">
+                        <Switch
+                            checkedChildren={<CheckOutlined />}
+                            unCheckedChildren={<CloseOutlined />}
+                            checked={record.active}
+                            // onClick={() => changeStatus(record.id)}
+                        />
+                    </Space>
+                )
+            },
+        ];
+      
+        useEffect(() => {
+            dispatch(fetchProducts('Fora da Casinha'));
+            console.log("products ->", products);
+        }, []);
 
         return (
             <>
-                <h2>ForaCaixinha.com</h2>
                 <Form
                     layout='vertical'
                     form={form}
+                    autoComplete="off"
+                    onFinish={handleCreteItem}
                 >
                     <Form.Item
                         name='url'
@@ -380,11 +425,13 @@ function BackOffice() {
                         <Input placeholder="0,00" />
                     </Form.Item>
                     <Form.Item>
-                        <Button key="submit" type="primary" onClick={handleCreteItem} className="btn-register" >
+                        <Button key="submit" type="primary" className="btn-register" >
                             {loading ? "Salvando..." : "Criar Novo Produto"}
                         </Button>
                     </Form.Item>
                 </Form>
+
+                <Table columns={columns as any} dataSource={products} key='tableProducts' />
             </>
         )
     }

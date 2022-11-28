@@ -42,13 +42,14 @@ function RegisterPage() {
                 .then((response) => {
                     console.log("handleRegister ->", response);
                 });
+                
             alert('Cadastro realizado com sucesso, favor confirmar o código de verificação enviado para seu e-mail.');
             history.push('/confirm-register');
             setLoading(false);
         } catch (e) {
             setLoading(false);
             console.log("handleRegister error ->", e);
-            alert('Opps..., Ocorreu um erro ao tentar logar');
+            alert('Opps..., Ocorreu um erro ao realizar o cadastro, tente novamente mais tarde.');
         }
     }
 

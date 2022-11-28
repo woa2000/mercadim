@@ -16,6 +16,12 @@ const userRoutes = [
     { path: "/backoffice", component: BackOffice }
 ];
 
+const adminRoutes = [
+    { path: "/", component: Home },
+    { path: "/checkout", component: Checkout },
+    { path: "/backoffice", component: BackOffice }
+];
+
 
 const authRoutes = [
     { path: "/", component: LoginPage },
@@ -27,4 +33,4 @@ const backofficeRoutes = [
 
 ];
 
-export  {userRoutes, authRoutes};
+export  {adminRoutes, userRoutes, authRoutes};

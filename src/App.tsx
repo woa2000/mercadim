@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { BrowserRouter as Router, Switch, Route, useHistory } from 'react-router-dom';
-import { userRoutes, authRoutes } from './routes';
+import { userRoutes, authRoutes, adminRoutes } from './routes';
 
 import { Spin } from 'antd';
 
@@ -30,6 +30,7 @@ function App(user: IUser) {
   const dispatch = useDispatch<AppDispatch>();
   console.log("App ->", user);
   const [userId, setUserId] = useState(user.userId);
+  const [email, setEmail] = useState(user.email);
   const [loggedIn, setLoggedIn] = useState(null) as any;
 
   // const checkUser = async () => {
@@ -98,6 +99,22 @@ function App(user: IUser) {
     );
   }
 
+  function RenderAdminRoutes() {
+    return (
+      <Router>
+        <CustomLayout
+          singOut={signOut}
+        >
+          <Switch>
+            {adminRoutes.map((r, idx) => (
+              <Route key={idx} exact path={r.path} component={r.component} />
+            ))}
+          </Switch>
+        </CustomLayout>
+      </Router>
+    )
+  }
+
   function RenderUserRoutes() {
     return (
       <Router>
@@ -126,7 +143,11 @@ function App(user: IUser) {
     )
   }
 
-  return loggedIn != null ? userId != null ? RenderUserRoutes() : RenderAuthRoutes() : Loader();
+  return loggedIn != null ? 
+      ( userId != null ? 
+         email == 'woa2000@gmail.com' || email == 'romuloaugustoromani@gmail.com' || email == 'baseggiocarol0@gmail.com' ? RenderAdminRoutes() : RenderUserRoutes() 
+        : RenderAuthRoutes() ) 
+    : Loader();
 }
 
 const AppWrapper = () => {
