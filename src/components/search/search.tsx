@@ -47,7 +47,7 @@ function SearchItems() {
                 })
                 .map((value, idx) => {
                     const id = `${value}`;
-                    console.log('Valor de Id: ',id)
+                    //console.log('Valor de Id: ',id)
                     return {
                     value: id,
                     label: (
