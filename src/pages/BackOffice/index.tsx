@@ -18,7 +18,7 @@ function BackOffice() {
     const onChange = (key: string) => {
         console.log(key);
     };
-    
+
     function RenderTabDepart() {
         const [searchText, setSearchText] = useState('');
         const [searchedColumn, setSearchedColumn] = useState('');
@@ -260,9 +260,11 @@ function BackOffice() {
         }
         else {
             return (
-                <div>
-                    <h1>Carregando...</h1>
-                </div>
+                <>
+                    <div>
+                        <h1>Carregando...</h1>
+                    </div>
+                </>
             )
         }
     }
@@ -324,7 +326,7 @@ function BackOffice() {
         }
 
         const props: UploadProps = {
-            onRemove: (file: any)=> {
+            onRemove: (file: any) => {
                 const index = fileList.indexOf(file);
                 const newFileList = fileList.slice();
                 newFileList.splice(index, 1);
@@ -348,7 +350,7 @@ function BackOffice() {
             {
                 title: 'Preço',
                 dataIndex: 'price',
-            },            
+            },
             {
                 title: 'Ativo',
                 key: 'active',
@@ -369,13 +371,13 @@ function BackOffice() {
                             checkedChildren={<CheckOutlined />}
                             unCheckedChildren={<CloseOutlined />}
                             checked={record.active}
-                            // onClick={() => changeStatus(record.id)}
+                        // onClick={() => changeStatus(record.id)}
                         />
                     </Space>
                 )
             },
         ];
-      
+
         useEffect(() => {
             dispatch(fetchProducts('Fora da Casinha'));
             console.log("products ->", products);
