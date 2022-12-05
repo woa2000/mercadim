@@ -46,7 +46,8 @@ function SearchItems() {
                     return value.toLowerCase().includes(query.toLowerCase())
                 })
                 .map((value, idx) => {
-                    const id = `${value}${idx}`;
+                    const id = `${value}`;
+                    console.log('Valor de Id: ',id)
                     return {
                     value: id,
                     label: (
