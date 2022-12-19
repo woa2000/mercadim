@@ -2,7 +2,7 @@ body{
     font-family: Poppins, sans-serif;
 }
 
-.container-login{
+.container-change-password{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,7 +12,7 @@ body{
     background-color: #fff;
 }
 
-.container-login .box{
+.container-change-password .box{
     padding: 25px;
     border-radius: 15px;
     background-color: #f5f5f5;
@@ -20,7 +20,7 @@ body{
 
 }
 
-.btn-login{
+.btn-change-password{
     width: 100%;
 }
 
@@ -39,5 +39,4 @@ body{
     text-decoration: none;
     font-weight: bold;
     text-align: center;
-    margin-top: 0.5rem;
 }

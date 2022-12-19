@@ -85,6 +85,9 @@ function LoginPage() {
                     <div className='link-account'>
                         <Link to="/signup">Criar conta</Link>
                     </div>
+                    <div className='link-account'>
+                        <Link to="/change-password">Alterar senha</Link>
+                    </div>
                 </div>
 
             </div>

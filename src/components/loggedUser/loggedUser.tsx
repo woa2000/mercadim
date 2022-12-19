@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { UserOutlined, LogoutOutlined, FormOutlined } from '@ant-design/icons';
+import { UserOutlined, LogoutOutlined, FormOutlined, KeyOutlined } from '@ant-design/icons';
 import { Avatar } from 'antd';
 
 import './styles.css';
@@ -20,6 +20,14 @@ function LoggedUser({ singOut }: any) {
     dispatch(logout(userId));
   }
 
+  function handleChangePassword() {
+    console.log('handleChangePassword')
+    dispatch(logout(userId))
+    .then(() => {
+      window.location.href = '/change-password';
+    });
+  }
+
   function handleMenu() {
     setMenuOpen(!menuopen);
   }
@@ -38,7 +46,10 @@ function LoggedUser({ singOut }: any) {
                     <div className="label"><FormOutlined /> Backoffice</div>
                   </div> */}
                   <div>
-                    <div className="label" onClick={handleSignOut} ><LogoutOutlined /> Sair</div>
+                    <div className="label" onClick={handleChangePassword} ><KeyOutlined /> Alterar Senha</div>                    
+                  </div>
+                  <div>
+                    <div className="label text-danger mt-5" onClick={handleSignOut} ><LogoutOutlined /> Sair</div>
                   </div>
                 </div>
               )

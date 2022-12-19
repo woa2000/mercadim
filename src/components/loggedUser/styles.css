@@ -33,9 +33,17 @@
     border-radius: 5px;
     margin-top: 5px;
     right: 0px;
-    width: 150px;
+    width: 155px;
 }
 
 .submenu .label{
     font-weight: 500;
+}
+
+.submenu .label.text-danger{
+    color: red;
+}
+
+.submenu .label.mt-5{
+    margin-top: 5px;
 }
